@@ -1,5 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from 'react';
 import Image from "next/image";
 
 export default function Welcome() {
@@ -8,6 +9,7 @@ export default function Welcome() {
     const picture = searchParams.get('picture');
 
     return (
+        <Suspense fallback={<div>Loading...</div>}>
         <div className="flex justify-center items-center h-screen">
             <div className="flex flex-col items-center justify-center bg-white p-8 rounded-lg shadow-md max-w-md w-full">
                 <h1 className="text-2xl font-bold mb-2 text-center text-black">Thank you {name} for trying the application!</h1>
@@ -24,5 +26,6 @@ export default function Welcome() {
             </div>
 
         </div>
+        </Suspense>
     );
 }
