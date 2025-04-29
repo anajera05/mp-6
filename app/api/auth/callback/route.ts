@@ -32,7 +32,11 @@ export async function GET(req: NextRequest) {
         })
 
         if (!userRes.ok) {
-            return `User info request failed: ${userRes.statusText}`
+            return NextResponse.json(
+                { error: `User info request failed: ${userRes.statusText}` },
+                { status: 500 }
+            )
+
         }
 
         const userData = await userRes.json()
