@@ -1,5 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 
 export default function Welcome() {
     const searchParams = useSearchParams();
@@ -12,7 +13,13 @@ export default function Welcome() {
                 <h1 className="text-2xl font-bold mb-2 text-center text-black">Thank you {name} for trying the application!</h1>
                 <h2 className="text-lg mb-4  text-gray-600">CS391 is my favorite class!</h2>
                 <div className="flex justify-center mt-4">
-                    {picture && <img src={picture} alt={`${name}'s profile picture`} width={100} />}
+                    {picture && <Image
+                        src={picture}
+                        alt="profile picture"
+                        width={128}
+                        height={128}
+                        className="rounded-full"
+                    />}
                 </div>
             </div>
 
