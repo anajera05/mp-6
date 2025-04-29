@@ -1,7 +1,5 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import Link from "next/link";
-import googleSignInLink from "@/lib/google/googleSignInLink";
 
 export default function Welcome() {
     const searchParams = useSearchParams();
