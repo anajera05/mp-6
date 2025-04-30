@@ -24,6 +24,13 @@ export async function GET(req: NextRequest) {
         })
 
         const tokenData = await tokenRes.json()
+        if (!tokenRes.ok || !tokenData.access_token) {
+            return NextResponse.json(
+                { error: `Token request failed: ${tokenData.error || 'Unknown error'}` },
+                { status: 500 }
+            )
+        }
+
 
         const userRes = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
             headers: {
