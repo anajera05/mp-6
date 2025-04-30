@@ -1,5 +1,5 @@
 export default function googleSignInLink(): string {
-
+  console.log(process.env.GOOGLE_REDIRECT_URI);
   const queryParams = new URLSearchParams({
     scope:
         "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
