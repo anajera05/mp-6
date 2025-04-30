@@ -6,7 +6,7 @@ export default function googleSignInLink(): string {
     response_type: "code",
     access_type: "offline",
     prompt: "consent",
-    redirect_uri: redirectUri,
+    redirect_uri: process.env.GOOGLE_REDIRECT_URI as string,
     client_id: process.env.GOOGLE_CLIENT_ID as string,
   });
 
