@@ -1,6 +1,4 @@
 export default function googleSignInLink(): string {
-  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000';
-  const redirectUri = `${baseUrl}/api/auth/callback`;
 
   const queryParams = new URLSearchParams({
     scope:
