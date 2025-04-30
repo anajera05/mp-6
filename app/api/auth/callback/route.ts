@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server'
 export async function GET(req: NextRequest) {
     const url = new URL(req.url)
     const code = url.searchParams.get('code')
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000';
+    const redirectUri = `${baseUrl}/api/auth/callback`;
 
     if (!code) {
         return NextResponse.json({ error: 'Missing code' }, { status: 400 })
@@ -18,7 +20,7 @@ export async function GET(req: NextRequest) {
                 code,
                 client_id: process.env.GOOGLE_CLIENT_ID!,
                 client_secret: process.env.GOOGLE_CLIENT_SECRET!,
-                redirect_uri: process.env.GOOGLE_REDIRECT_URI!,
+                redirect_uri: redirectUri!,
                 grant_type: 'authorization_code',
             }),
         })
